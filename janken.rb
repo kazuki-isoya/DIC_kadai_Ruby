@@ -38,33 +38,30 @@ class Janken
     # その際、あいこもしくはグー、チョキ、パー以外の値入力時には、もう一度ジャンケンをする
     # 相手がグー、チョキ、パーのうち、何を出したのかも表示させる
 
-      call = enemy_hand
-      case call
+      $call = enemy_hand
+      case $call
       when 0
-        call = "グー"
-        puts "相手の手は#{call}です。"
+        $call = "グー"
       when 1
-        call = "チョキ"
-        puts "相手の手は#{call}です。"
+        $call = "チョキ"
       when 2
-        call = "パー"
-        puts "相手の手は#{call}です。"
+        $call = "パー"
       else
-        call = "降参"
-        puts "参りました"
+        $call = "降参"
       end
+      # puts "相手の手は#{$call}です。"
 
       judge = (player_hand-enemy_hand+3)%3
       # pp judge
 
       if judge == 2
-        return "あなたの勝ちです"
+        return "相手の手は#{$call}です。あなたの勝ちです"
 
       elsif judge == 1
-        return "あなたの負けです"
+        return "相手の手は#{$call}です。あなたの負けです"
 
       elsif judge == 0
-        return "あいこです"
+        return "相手の手は#{$call}です。あいこです"
       end
 
   end
@@ -77,11 +74,11 @@ janken = Janken.new
 while true
   duel = janken.pon(player.hand, enemy.hand)
   puts duel
-  if duel == "あなたの勝ちです"
+  if duel == "相手の手は#{$call}です。あなたの勝ちです"
     break
-  elsif duel == "あなたの負けです"
+  elsif duel == "相手の手は#{$call}です。あなたの負けです"
     break
-  elsif duel == "あいこです"
+  elsif duel == "相手の手は#{$call}です。あいこです"
   end
 end
 # 下記の記述で、ジャンケンメソッドが起動される
