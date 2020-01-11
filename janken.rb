@@ -3,25 +3,29 @@ class Player
     # コンソールを入力待ち状態にし、プレイヤーがコンソールから打ち込んだ値を出力する処理のメソッドの処理をこの中に作成する
     puts "下の選択肢から数字を選んで入力して下さい"
     puts "グー:0 チョキ:1 パー:2"
-
+#アルファベットや文字を入力しても成立してしまうので、まず文字列として読み込んでからto_iメソッドで数字に変換すると良いかも
     while true
-      myhand = gets.to_i
-
-      if myhand == 0
+      #普通のgetsメソッドでやってみる
+      myhand = gets
+      # pp myhand
+      if myhand == "0\n"
         break
-      elsif myhand == 1
+      elsif myhand == "1\n"
         break
-      elsif  myhand == 2
+      elsif myhand == "2\n"
         break
       else
         puts "0〜2の数字を入力してください"
       end
     end
     # puts "あなた: #{myhand}"
-    return myhand
+    return myhand.to_i
+    # pp myhand
   end
 end
 
+# player = Player.new
+# p player.hand
 class Enemy
   def hand
     # グー、チョキ、パーの値をランダムに出力するメソッドの処理をこの中に作成する
